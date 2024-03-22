@@ -1,43 +1,30 @@
-# WAD 301 - W2 Lab Day
+# React + TypeScript + Vite
 
-## Requirements:
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
--   You must use proper `TypeScript`:
+Currently, two official plugins are available:
 
-    -   (No `any`'s in the codebase).
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
--   You can choose how to style your project.
+## Expanding the ESLint configuration
 
--   Provide at least 1 commit per task.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
--   You can choose your own file names.
+- Configure the top-level `parserOptions` property like this:
 
--   You can create `PRs` and send it to me in case you have some questions.
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
 
-## Questions:
-
-### Program 1: `useDocumentTitle`
-
-Create a custom hook called useDocumentTitle that updates the document title based on the value passed to it.
-
-Instructions:
-
--   Define the `useDocumentTitle` hook.
-
--   Implement logic to update the document title using document.title.
-
--   Test the hook by using it in a React component to update the document title based on certain conditions or user input.
-
-### Program 2: `useLocalStorage`
-
-Create a custom hook called useLocalStorage that allows storing and retrieving data in the browser's local storage. The hook should take a key for identifying the data in local storage and an initial value.
-
-Instructions:
-
--   Define the `useLocalStorage` hook.
-
--   Implement logic to retrieve the stored value from local storage on component mount.
-
--   Implement a function to update the stored value and reflect changes in local storage.
-
--   Test the hook by using it in a React component to store and retrieve a piece of data.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

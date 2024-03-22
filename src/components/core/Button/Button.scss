@@ -1,0 +1,13 @@
+$class: core-button;
+
+.#{$class} {
+  &--sm {
+    padding: 12px;
+  }
+  &--md {
+    padding: 24px;
+  }
+  &--lg {
+    padding: 36px;
+  }
+}
